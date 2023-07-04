@@ -43,7 +43,7 @@ export const addUser = createAsyncThunk('auth/addUser',async(user:Person,thunkAP
     const { rejectWithValue } = thunkAPI;
 try {
     const { data } = await axios.post<Person>(
-        "http://localhost:5000/user/",
+        "https://note-node-js.vercel.app/user/",
         user
       ); 
       console.log(data);
@@ -70,7 +70,7 @@ export const loginUser = createAsyncThunk('auth/loginUser',async(user2:LogUser,t
 
   try {
     const { data } = await axios.post<LogUser>(
-      "http://localhost:5000/user/login",
+      "https://note-node-js.vercel.app/user/login",
       user2
     );     
     const { message,token} = data;

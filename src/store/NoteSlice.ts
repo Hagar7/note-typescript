@@ -9,9 +9,9 @@ interface NoteData {
     desc: string,
 }
 interface NoteIntefrace {
-    title: string,
-    desc: string,
-    _id: string
+
+    _id: string,
+    value: string
 }
 interface StateInterface {
       loading: boolean;
@@ -34,9 +34,9 @@ export const getNotes = createAsyncThunk('notes/getNotes',async(_,thunkAPI)=>{
     const { rejectWithValue } = thunkAPI;
 
     try {
-        const {data} = await axios('http://localhost:5000/note/',{
+        const {data} = await axios('https://note-node-js.vercel.app/note/',{
             headers:{ token: localStorage.getItem("token") } 
-        })        
+        })                
         return data.notes
         
     } catch (error) {
@@ -48,7 +48,7 @@ export const getNotes = createAsyncThunk('notes/getNotes',async(_,thunkAPI)=>{
 export const deleteNote = createAsyncThunk('note/deleteNote',async(_id:string,thunkAPI)=>{
     const { rejectWithValue } = thunkAPI;
     try {
-        const {data} = await axios.delete(`http://localhost:5000/note/${_id}`,{
+        const {data} = await axios.delete(`https://note-node-js.vercel.app/note/${_id}`,{
             headers:{ token: localStorage.getItem("token") } 
         })
         console.log(data);
@@ -64,7 +64,7 @@ export const deleteNote = createAsyncThunk('note/deleteNote',async(_id:string,th
 export const addNote = createAsyncThunk('note/addNote',async(noteData:NoteData,thunkAPI)=>{
     const { rejectWithValue } = thunkAPI;
     try {
-        const {data} = await axios.post(`http://localhost:5000/note/`,noteData,{
+        const {data} = await axios.post(`https://note-node-js.vercel.app/note/`,noteData,{
             headers:{ token: localStorage.getItem("token") } 
         })
         console.log(data);
@@ -79,7 +79,7 @@ export const addNote = createAsyncThunk('note/addNote',async(noteData:NoteData,t
 export const updateNote = createAsyncThunk('note/updateNote',async(noteData:NoteIntefrace,thunkAPI)=>{
     const { rejectWithValue } = thunkAPI;
     try {
-        const {data} = await axios.post(`http://localhost:5000/note/${noteData._id}`,noteData,{
+        const {data} = await axios.post(`https://note-node-js.vercel.app/note/${noteData._id}`,noteData.value,{
             headers:{ token: localStorage.getItem("token") } 
         })
         console.log(data);
@@ -96,7 +96,7 @@ const noteSlice =  createSlice({
     initialState,
     reducers:{
         selectedNote:(state,action)=>{
-          return action.payload
+            state.note = action.payload
         }
     },
     extraReducers:(builder)=>{

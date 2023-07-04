@@ -6,8 +6,6 @@ import { BounceLoader } from "react-spinners";
 import AddModal from "../../Components/AddModal/AddModal";
 import EditModal from "../../Components/EditModal/EditModal";
 
-
-
 const Home = () => {
   const dispatch = useAppDispatch();
   const { notes, loading } = useAppSelector((state) => state.note);
@@ -15,7 +13,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(getNotes());
   }, [dispatch]);
-
 
   return (
     <>
@@ -40,17 +37,17 @@ const Home = () => {
               <div className="col-md-12 text-end">
                 <button
                   className={`${style.btns}`}
-                 
-                  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
                 >
                   <i className="fas fa-plus-circle"></i> Add Note
                 </button>
-                <AddModal/>
+                <AddModal />
               </div>
             </div>
             {/* <!-- notes --> */}
             <div className="row py-5">
-              {notes?.map((note,index) => (
+              {notes?.map((note, index) => (
                 <div className="col-md-3" key={index}>
                   <div className={`${style.items}`}>
                     <div className={`${style.item}`}>
@@ -58,15 +55,18 @@ const Home = () => {
                         <h3>{note.title}</h3>
                       </div>
                       <div className={`${style.icons}`}>
-                        <i className="fa-solid fa-trash-can"
-                        onClick={()=>dispatch(deleteNote(note._id))}></i>
+                        <i
+                          className="fa-solid fa-trash-can"
+                          onClick={() => dispatch(deleteNote(note._id))}
+                        ></i>
                         <i
                           className="fa-regular fa-pen-to-square"
                           data-bs-toggle="modal"
                           data-bs-target="#staticBackdrop2"
-                          onClick={()=>dispatch(selectedNote(note))}
-                        ></i>
-                        <EditModal />
+                          onClick={() => dispatch(selectedNote(note))}
+                        >
+                        </i>
+                        <EditModal /> 
                       </div>
                     </div>
                     <div className={`${style.desc}`}>
@@ -77,6 +77,7 @@ const Home = () => {
               ))}
             </div>
           </div>
+          
         </>
       )}
     </>
