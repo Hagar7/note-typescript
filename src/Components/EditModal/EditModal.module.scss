@@ -1,0 +1,22 @@
+@import '../../index.scss';
+
+
+.myModal{
+    .modalHeader{
+ .myModalTitle{
+        color:$mainbg;
+    }
+    }
+    .btns {
+        background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+        color: $txtClr;
+        padding: 10px;
+        border: 1px solid transparent;
+        @include borderRadius(5px);
+        i {
+          margin-right: 5px;
+          font-size: 18px;
+        }
+      }
+   
+}

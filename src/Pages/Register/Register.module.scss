@@ -1,0 +1,40 @@
+@import '../../index.scss';
+
+.reg{
+    min-height: 70vh;
+    .itm{
+        background-color: #212428; 
+        .errorMsg{
+            color:$mainclr;
+        }
+        .inputData input{
+            border: 1px solid transparent !important;    
+            box-shadow: 0 0  0 transparent !important;
+        }
+        .myBtn{
+            border-color: $mainbg !important;
+            &:hover{
+                border-color: $mainbg !important;
+            }
+            background-color: #424649 !important;
+            border-color: $mainbg !important;
+            .alertSpan{
+                color: aliceblue;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width:767px){
+    .item{
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px){
+    .item{
+        display: none;
+    }
+}

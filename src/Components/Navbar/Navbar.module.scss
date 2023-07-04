@@ -1,0 +1,16 @@
+@import '../../index.scss';
+
+
+.myNav{
+    background-color: $mainbg;
+    color: $txtClr;
+    box-shadow:  10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    .logo{
+        font-family: 'Dancing Script', cursive;
+        font-size: 30px;
+        color:$mainclr;
+    }
+    .navLink{
+        color: #eee !important;
+    }
+}

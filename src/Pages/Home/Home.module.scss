@@ -1,0 +1,44 @@
+@import "../../index.scss";
+
+.home {
+  .btns {
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+    color: $txtClr;
+    padding: 10px;
+    border: 1px solid transparent;
+    @include borderRadius(5px);
+    i {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+  .items {
+    // background-color: $mainbg;
+    background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    padding: 20px;
+    margin-bottom: 30px;
+    @include borderRadius(5px);
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      height: fit-content;
+      .title {
+        h3 {
+          color: $txtClr;
+        }
+      }
+      .icons {
+        padding-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        i {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
