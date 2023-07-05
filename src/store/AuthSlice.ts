@@ -60,7 +60,11 @@ try {
       }
       return data;
 } catch (error) {
-    return rejectWithValue((error as Error).message);   
+  await Swal.fire({
+    icon: "error",
+    text: "email is already registered",
+  });
+    return  rejectWithValue((error))
 }
 })
 
@@ -87,6 +91,10 @@ export const loginUser = createAsyncThunk('auth/loginUser',async(user2:LogUser,t
     }
     return data;
   } catch (error) {
+    await Swal.fire({
+      icon: "error",
+      text: "Invalid password or email",
+    });
     return rejectWithValue((error as Error).message);
   }
 })
@@ -114,7 +122,6 @@ const authSlice = createSlice({
         });
         builder.addCase(addUser.rejected, (state, action) => {
           state.loading = false;
-          // state.error = action.payload;
           state.error = action.error.message;
         });
         builder.addCase(loginUser.pending, (state) => {
@@ -128,7 +135,6 @@ const authSlice = createSlice({
         });
         builder.addCase(loginUser.rejected, (state, action) => {
           state.loading = false;
-          // state.error = action.payload;
           state.error = action.error.message;
         });
       }, 

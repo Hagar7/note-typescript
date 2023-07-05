@@ -15,7 +15,7 @@ interface NoteIntefrace {
 }
 interface StateInterface {
       loading: boolean;
-      error?: string | unknown;
+      error?: boolean;
       notes: Note[] | null |undefined;
       message?:string,
       note:Note |NoteData | null;
@@ -24,11 +24,10 @@ interface StateInterface {
 const initialState:StateInterface = {
     message: "",
     loading:false,
-    error:"",
+    error:false,
     notes: [],
     note:null
 }
-
 
 export const getNotes = createAsyncThunk('notes/getNotes',async(_,thunkAPI)=>{
     const { rejectWithValue } = thunkAPI;
@@ -66,9 +65,7 @@ export const addNote = createAsyncThunk('note/addNote',async(noteData:NoteData,t
     try {
         const {data} = await axios.post(`https://note-node-js.vercel.app/note/`,noteData,{
             headers:{ token: localStorage.getItem("token") } 
-        })
-        console.log(data);
-        
+        })        
         return data.result
     } catch (error) {
         return rejectWithValue((error as Error).message); 
@@ -102,67 +99,63 @@ const noteSlice =  createSlice({
     extraReducers:(builder)=>{
         builder.addCase(getNotes.pending, (state) =>{
             state.loading = true;
-            state.error = "";
+            state.error = false;
         })
         builder.addCase(getNotes.fulfilled, (state,action) =>{
             state.loading = false;
-            state.error = "";
+            state.error = false;
             state.notes = action.payload;
         })
         builder.addCase(getNotes.rejected, (state,action) =>{
             state.loading = false;
-            // state.error = action.payload;
-            state.error = action.error.message;
+            state.error = true;
         })
         //delete note
         builder.addCase(deleteNote.pending, (state) =>{
             state.loading = true;
-            state.error = "";
+            state.error = false;
         })
         builder.addCase(deleteNote.fulfilled, (state,action) =>{
             state.loading = false;
-            state.error = "";
+            state.error =false;
             const deletedNoteId = action.payload;
             state.notes = state.notes?.filter((note) => note._id !== deletedNoteId);
           
         })
         builder.addCase(deleteNote.rejected, (state,action) =>{
             state.loading = false;
-            // state.error = action.payload;
-            state.error = action.error.message;
+            state.error = true;
         })
          //add note
          builder.addCase(addNote.pending, (state) =>{
             state.loading = true;
-            state.error = "";
+            state.error = false;
         })
         builder.addCase(addNote.fulfilled, (state,action) =>{
             state.loading = false;
-            state.error = "";
+            state.error = false;
             const newNote = action.payload;
             state.notes = state.notes ? [...state.notes, newNote] : [newNote];
           
         })
         builder.addCase(addNote.rejected, (state,action) =>{
             state.loading = false;
-            // state.error = action.payload;
-            state.error = action.error.message;
+            state.error = true;
         })
         //update
         builder.addCase(updateNote.pending, (state) =>{
             state.loading = true;
-            state.error = "";
+            state.error = false;
         })
         builder.addCase(updateNote.fulfilled, (state,action) =>{
             state.loading = false;
-            state.error = "";
+            state.error = false;
             state.note = action.payload
           
         })
         builder.addCase(updateNote.rejected, (state,action) =>{
             state.loading = false;
-            // state.error = action.payload;
-            state.error = action.error.message;
+            state.error = true;
         })
     }
 })

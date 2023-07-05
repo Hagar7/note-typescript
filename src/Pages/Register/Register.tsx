@@ -31,16 +31,16 @@ const Register: React.FC = () => {
   const formValidation = () => {
     let schema = Joi.object({
       name: Joi.string().min(2).max(10).required().messages({
-        "string.max": "length must be less than or equal to 10 characters long",
+        "string.max": "name length must be less than or equal to 10 characters long",
       }),
       email: Joi.string()
         .required()
         .email({ tlds: { allow: ["com", "net"] } }),
       password: Joi.string()
-        .required()
+        .required().min(4)
         .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .messages({
-          "string.pattern.base": "password must contains number and symbols",
+          "string.pattern.base": "password length must be at least 6 characters long",
         }),
       phone: Joi.string().required(),
     });

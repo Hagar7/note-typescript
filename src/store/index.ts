@@ -3,6 +3,7 @@ import  storage  from 'redux-persist/lib/storage';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import auth from './AuthSlice'
 import note from './NoteSlice'
+import quotes from './QuotesSlice'
 import { persistReducer, persistStore } from "redux-persist";
 
 
@@ -22,7 +23,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({ 
   auth,
-  note
+  note,
+  quotes
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

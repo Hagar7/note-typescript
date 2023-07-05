@@ -13,3 +13,9 @@ export interface Note {
     updatedAt: string;
     __v:       number;
 }
+
+export interface Ouote {
+    quote:    string;
+    author:   string;
+    category: string;
+}

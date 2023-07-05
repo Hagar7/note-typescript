@@ -32,7 +32,7 @@ const Login: React.FC = () => {
         .required()
         .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .messages({
-          "string.pattern.base": "password must contains number and symbols",
+          "string.pattern.base": "password length must be at least 6 characters long",
         }),
     });
     return schema.validate(userData, { abortEarly: false });

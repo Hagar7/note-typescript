@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
+import Quotes from './Pages/Quotes/Quotes';
 // import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 // import { BrowserRouter as Router,Route, Routes, BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
 function App() {
@@ -15,6 +16,7 @@ function App() {
       {index:true,element:<Home/>},
       {path:'/login',element:<Login/>},
       {path:'/register',element:<Register/>},
+      {path:'/quotes',element:<Quotes/>},
     ]},
   ])
 

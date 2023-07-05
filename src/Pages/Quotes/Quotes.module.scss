@@ -1,0 +1,38 @@
+@import "../../index.scss";
+
+.quotes {
+    margin-top: 40px;
+   h2{
+    text-align: center;
+    color: $mainclr;
+    font-size: 45px;
+    font-family: 'Dancing Script', cursive;   }
+  .items {
+    margin-top: 30px;
+    background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    padding: 20px;
+    margin-bottom: 30px;
+    @include borderRadius(5px);
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      height: fit-content;
+      .title {
+        h3 {
+          color: $txtClr;
+        }
+      }
+      .icons {
+        padding-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        i {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

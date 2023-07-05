@@ -3,6 +3,7 @@ import style from "./Navbar.module.scss";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logOut } from "../../store/AuthSlice";
+import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -28,30 +29,48 @@ const Navbar: React.FC = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {authUser ? (
-              <li className="nav-item">
-                <Link
-                  to=""
-                  className={`${style.navLink} nav-link`}
-                  onClick={() => dispatch(logOut())}
+              <>
+                 <li className="nav-item">
+                <NavLink
+                  to="/"
+                   className={({isActive})=>isActive?" nav-link yellowbg":"nav-link"}
                 >
-                  LogOut
-                </Link>
+                  Home
+                </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  to="quotes"
+                  className={({isActive})=>isActive?" nav-link yellowbg":"nav-link"}
+                >
+                  Quotes
+                </NavLink>
+              </li>
+                 <li className="nav-item">
+                 <NavLink
+                   to=""
+                   className={`${style.navLink} nav-link`}
+                   onClick={() => dispatch(logOut())}
+                 >
+                   LogOut
+                 </NavLink>
+               </li>
+               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <Link
-                    className={`${style.navLink} nav-link active`}
+                  <NavLink
+                    className={({isActive})=>isActive?" nav-link yellowbg":"nav-link"}
                     aria-current="page"
                     to="register"
                   >
                     Register
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className={`${style.navLink} nav-link`} to="login">
+                  <NavLink className={({isActive})=>isActive?" nav-link yellowbg":"nav-link"}to="login">
                     LogIn
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
