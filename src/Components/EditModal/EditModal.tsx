@@ -1,8 +1,16 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import style from "./EditModal.module.scss";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Joi from "joi";
 import { updateNote } from "../../store/NoteSlice";
+
+// interface NoteData {
+//   _id: string;
+//   title: string;
+//   desc: string;
+// }
+
+
 
 const EditModal: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -11,6 +19,10 @@ const EditModal: React.FC = () => {
   const [desc, setNoteArea] = useState<string>("");
   const [errormsg, setErrorMsg] = useState<string[]>([]);
   const { note } = useAppSelector((state) => state.note);
+  useEffect(() => {
+    setNoteArea(note?.desc as string);
+    setNoteTitle(note?.title as string);
+  },[note])
 
   const changeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNoteTitle(e.target.value);
@@ -32,15 +44,19 @@ const EditModal: React.FC = () => {
 
   const updateHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    let validateResponse = formValidation();
-    if (validateResponse.error) {
-      setErrorMsg(validateResponse.error.details.map((item) => item.message));
-    } else {
+    // let validateResponse = formValidation();
+    // if (validateResponse.error) {
+    //   setErrorMsg(validateResponse.error.details.map((item) => item.message));
+    // } else {
      
-    //   dispatch(updateNote({note._id,title,desc}));
+      dispatch(updateNote({
+        _id: note?._id as string,
+        value: {title,desc},
+      }));
+      
       setNoteTitle("");
       setNoteArea("");
-    }
+    // }
   };
   const showmsg = (pram: string) => {
     let newMsgs = errormsg.filter((error) => error.includes(pram));
@@ -84,7 +100,7 @@ const EditModal: React.FC = () => {
                     type="text"
                     placeholder="Enter Note Title"
                     name="title"
-                    value={note?.title}
+                    defaultValue={note?.title}
                     className="form-control py-3"
                     onChange={changeTitleHandler}
                   />
@@ -92,7 +108,7 @@ const EditModal: React.FC = () => {
                 {showmsg("title")}
                 <div className={`${style.inputData} my-3`}>
                   <textarea
-                    value={note?.desc}
+                    defaultValue={note?.desc}
                     placeholder="Enter Note Content"
                     name="content"
                     className="form-control "

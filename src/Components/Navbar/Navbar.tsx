@@ -46,6 +46,14 @@ const Navbar: React.FC = () => {
                   Quotes
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  to="contact"
+                  className={({isActive})=>isActive?" nav-link yellowbg":"nav-link"}
+                >
+                  Contact
+                </NavLink>
+              </li>
                  <li className="nav-item">
                  <NavLink
                    to=""

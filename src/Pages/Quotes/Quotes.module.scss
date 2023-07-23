@@ -1,12 +1,13 @@
 @import "../../index.scss";
 
 .quotes {
-    margin-top: 40px;
-   h2{
+  margin-top: 40px;
+  h2 {
     text-align: center;
     color: $mainclr;
     font-size: 45px;
-    font-family: 'Dancing Script', cursive;   }
+    font-family: "Dancing Script", cursive;
+  }
   .items {
     margin-top: 30px;
     background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
@@ -15,13 +16,12 @@
     margin-bottom: 30px;
     @include borderRadius(5px);
     .item {
-      display: flex;
-      justify-content: space-between;
       padding: 10px;
-      height: fit-content;
+      height: 250px;
       .title {
         h3 {
           color: $txtClr;
+          font-family: "Dancing Script", cursive;
         }
       }
       .icons {

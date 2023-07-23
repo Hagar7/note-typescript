@@ -31,16 +31,19 @@ const Register: React.FC = () => {
   const formValidation = () => {
     let schema = Joi.object({
       name: Joi.string().min(2).max(10).required().messages({
-        "string.max": "name length must be less than or equal to 10 characters long",
+        "string.max":
+          "name length must be less than or equal to 10 characters long",
       }),
       email: Joi.string()
         .required()
         .email({ tlds: { allow: ["com", "net"] } }),
       password: Joi.string()
-        .required().min(4)
+        .required()
+        .min(4)
         .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .messages({
-          "string.pattern.base": "password length must be at least 6 characters long",
+          "string.pattern.base":
+            "password length must be at least 6 characters long",
         }),
       phone: Joi.string().required(),
     });
@@ -72,7 +75,7 @@ const Register: React.FC = () => {
         <div className="row">
           <div className={`${style.itm} col-lg-12 text-center`}>
             <div className={`${style.info} py-3 mb-2`}>
-              <h4 className="text-muted m-3 ">Create My Account!</h4>
+              <h4 className=" m-3 ">Create Account!</h4>
 
               <form onSubmit={submitHandler}>
                 <div className={`${style.inputData} my-3`}>
@@ -131,7 +134,7 @@ const Register: React.FC = () => {
               <span className={`${style.alertSpan}`}>
                 Already a member ?{" "}
                 <Link
-                  style={{ textDecoration: "none", color: "#F9004D" }}
+                  style={{ textDecoration: "none", color: "#EAC51F" }}
                   to="/login"
                 >
                   Log in

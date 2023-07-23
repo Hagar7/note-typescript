@@ -1,0 +1,63 @@
+@import "../../index.scss";
+
+.contact {
+  width: 60%;
+  margin: 40px auto;
+  h2 {
+    text-align: center;
+    color: $mainclr;
+    font-size: 45px;
+    font-family: "Dancing Script", cursive;
+  }
+  .contactInfo {
+    margin-top: 30px;
+    background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    padding: 15px;
+    @include borderRadius(5px);
+    h5 {
+      font-family: "Dancing Script", cursive;
+      text-align: center;
+      font-size: 40px;
+    }
+    ul {
+      margin: 20px 0 10px;
+      display: flex;
+      justify-content: center;
+      li {
+        margin-left: 20px;
+        background-color: $mainbg;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include borderRadius(5px);
+        transition: 1s all ease-in-out;
+        -webkit-transiton: 0s all ease-in-out;
+        -moz-transition: 1s all ease-in-out;
+        -ms-transition: 1s all ease-in-out;
+        -o-transition: 1s all ease-in-out;
+        &:hover {
+          background-color: $txtClr;
+          i {
+            color: $mainclr;
+          }
+        }
+        a {
+          color: $txtClr;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.copy {
+  h4 {
+    color: $mainclr;
+    font-size: 35px;
+    font-family: "Dancing Script", cursive;
+    text-align: center;
+  }
+}

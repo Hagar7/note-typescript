@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,300;0,900;1,900&family=Roboto:wght@300&family=Space+Mono:ital@1&family=Urbanist:wght@100&family=Xanh+Mono:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,300;0,900;1,900&family=Roboto:wght@300&family=Space+Mono:ital@1&family=Urbanist:wght@100&family=Xanh+Mono:ital@1&display=swap");
 
-*{
+* {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;  
+  margin: 0;
 }
-ul{
+ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 //varibles
-$mainbg:#212428;
+$mainbg: #212428;
 // $mainclr:#F9004D;
-$mainclr:#EAC51F;
-$txtClr:#fff;
-body{
-  font-family: 'Roboto', sans-serif;
-  background-color:$mainbg;
+$mainclr: #eac51f;
+$txtClr: #fff;
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $mainbg;
   color: $txtClr;
 }
-@mixin borderRadius($x){
+@mixin borderRadius($x) {
   border-radius: $x;
   -webkit-border-radius: $x;
   -moz-border-radius: $x;
@@ -28,17 +28,17 @@ body{
   -o-border-radius: $x;
 }
 
-.swal2-container.swal2-center>.swal2-popup{
+.swal2-container.swal2-center > .swal2-popup {
   background-color: $mainbg;
   color: $txtClr;
 }
-.swal2-styled.swal2-confirm{
+.swal2-styled.swal2-confirm {
   background-color: $mainclr;
   border: 1px solid transparent;
 }
 
-
 .yellowbg {
-  background-color:$mainclr ;
+  background-color: $mainclr;
   color: black !important;
+  padding: 10px;
 }

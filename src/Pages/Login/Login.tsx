@@ -32,7 +32,8 @@ const Login: React.FC = () => {
         .required()
         .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .messages({
-          "string.pattern.base": "password length must be at least 6 characters long",
+          "string.pattern.base":
+            "password length must be at least 6 characters long",
         }),
     });
     return schema.validate(userData, { abortEarly: false });
@@ -63,7 +64,7 @@ const Login: React.FC = () => {
         <div className="row">
           <div className={`${style.itm} col-lg-12 text-center`}>
             <div className={`${style.info} py-3 mb-2`}>
-              <h4 className="text-muted m-4 ">GO to Your Account!</h4>
+              <h4 className="m-4 ">GO to Your Account!</h4>
 
               <form onSubmit={submitHandler}>
                 <div className={`${style.inputData} my-3 `}>

@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { addNote } from "../../store/NoteSlice";
 import Joi from "joi";
 
-const AddModal:React.FC = () => {
+const AddModal: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [title, setNoteTitle] = useState<string>("");
@@ -20,19 +20,20 @@ const AddModal:React.FC = () => {
   const formValidation = () => {
     let schema = Joi.object({
       title: Joi.string().max(10).required().messages({
-        "string.max": "length must be less than or equal to 10 characters long",
+        "string.max":
+          "title length must be less than or equal to 10 characters long",
       }),
-   
+
       desc: Joi.string().required(),
     });
-    return schema.validate({title,desc}, { abortEarly: false });
+    return schema.validate({ title, desc }, { abortEarly: false });
   };
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    let validateResponse =formValidation()
-    if(validateResponse.error){
+    let validateResponse = formValidation();
+    if (validateResponse.error) {
       setErrorMsg(validateResponse.error.details.map((item) => item.message));
-    }else{
+    } else {
       dispatch(addNote({ title, desc }));
       setNoteTitle("");
       setNoteArea("");

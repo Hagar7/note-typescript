@@ -23,12 +23,10 @@ const initialState:StateInterface = {
 export const getQuotes = createAsyncThunk('quotes/getQuotes',async(_,thunkAPI)=>{
     const { rejectWithValue } = thunkAPI;
     try {
-        const {data} = await axios('https://api.api-ninjas.com/v1/quotes?category=hope&limit=10',
+        const {data} = await axios('https://api.api-ninjas.com/v1/quotes?category=success&limit=10',
         {
             headers: { 'X-Api-Key': 'FbhIWEursfjhxOLa1TAzIQ==Yorfo3JjXnTqpZ5E'},
-        })
-        console.log(data);
-        
+        })        
         return data
     } catch (error) {
         return rejectWithValue((error as Error).message);
